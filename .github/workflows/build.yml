@@ -1,0 +1,20 @@
+name: Build
+
+on:
+  push:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Create demo artifact
+        run: echo "This is the demo artifact from the automation drill." > demo-artifact.txt
+
+      - name: Upload demo artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: demo-artifact
+          path: demo-artifact.txt
